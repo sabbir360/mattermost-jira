@@ -48,8 +48,11 @@ def mattermost_jira(token):
                 issue_type = "Started Work on"
             elif issue_type == "Work Stopped":
                 issue_type = "Stopped Work on"
+            elif issue_type == "Logged work on":
+                issue_type = "Stopped Work on"
             elif issue_type == "Comment Edited":
                 issue_type = "Edited comment on"
+
 
             print(issue_type)
 
