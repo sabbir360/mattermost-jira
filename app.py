@@ -54,6 +54,8 @@ def mattermost_jira(token):
                 issue_type = "Logged work on"
             elif issue_type == "Comment Edited":
                 issue_type = "Edited comment on"
+            elif issue_type == "Commented":
+                issue_type = "Commented on"
 
 
             print(issue_type)
