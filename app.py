@@ -19,6 +19,7 @@ def post_to_mattermost(text, channel=CHANNEL, username=USER_NAME, icon=USER_ICON
 
     response = curl_request("POST", MM_URL+"hooks/"+HOOK_ID, data=payload, headers=headers)
     result = response.text
+    print("---hook response---")
     print(result)
     return result
 
@@ -58,9 +59,6 @@ def mattermost_jira(token):
                 issue_type = "Edited comment on"
             elif issue_type == "Commented":
                 issue_type = "Commented on"
-
-
-            print(issue_type)
 
             if user_details:
                 user_photo = user_details['avatarUrls']['48x48']
