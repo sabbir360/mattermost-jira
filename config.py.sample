@@ -1,4 +1,6 @@
-JIRA_URL = "https://jiraproject/browse/"
+JIRA_URL = "https://jiraproject/"
+ISSUE_URL = JIRA_URL+"browse/"
+PROJECT_URL = JIRA_URL+"projects/"
 MM_URL = "https://im.mattermost.com/"
 HOOK_ID = "nq6xxxxxha"
 USER_NAME = "JIRA"
