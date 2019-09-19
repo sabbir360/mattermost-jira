@@ -94,7 +94,7 @@ def mattermost_jira(token):
             if issue_fields:
 
                 title = issue_fields.get("summary", "N/A")
-                description = issue_fields.get("description", "N/A")[:444]
+                description = issue_fields.get("description", "N/A")
                 creator = issue_fields.get('creator', None)
                 if creator:
                     creator = creator.get("displayName", "N/A")
