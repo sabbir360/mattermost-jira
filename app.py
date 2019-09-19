@@ -46,6 +46,7 @@ def post_to_mattermost(attachment, channel=CHANNEL, username=USER_NAME, icon=USE
 
     print("---hook response---")
     print(response.text)
+    return "Posted successfully."
 
 
 @app.route('/', methods=['GET'])
