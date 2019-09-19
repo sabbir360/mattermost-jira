@@ -94,7 +94,7 @@ def mattermost_jira(token):
             if issue_fields:
 
                 title = issue_fields.get("summary", "N/A")
-                description = issue_fields.get("description", "N/A")[:30]
+                description = issue_fields.get("description", "N/A")[:111]
                 creator = issue_fields.get('creator', None)
                 if creator:
                     creator = creator.get("displayName", "N/A")
@@ -103,8 +103,10 @@ def mattermost_jira(token):
 
                 project_data = issue_fields.get("project", None)
                 project = "N/A"
+                project_url = "#"
                 if project_data:
                     project = project_data.get("name", "N/A")
+                    project_url = project_data['avatarUrls']['48x48']
 
                 assignee = issue_fields.get('assignee', None)
                 if assignee:
@@ -118,14 +120,14 @@ def mattermost_jira(token):
                 post_data = dict()
                 post_data['author_name'] = user_name
                 post_data['author_icon'] = user_photo
-                post_data['author_link'] = JIRA_URL+"issues/?jql=assignee%3D\"{}\"".format(user_name)
+                post_data['author_link'] = project_url
                 post_data['title'] = title
                 post_data['text'] = description
                 post_data['title_link'] = JIRA_URL+key
                 post_data['fields'] = [
                     {
                         "short": True,
-                        "title": "Issue Type",
+                        "title": "Action Type",
                         "value": issue_type
                     },
                     {
