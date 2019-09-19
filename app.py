@@ -68,7 +68,6 @@ def mattermost_jira(token):
             user_details = data.get("user", None)
             key = issue_details.get('key', "N/A")
             user_name = user_details.get('displayName', "N/A")
-            user_photo = "http://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png"
 
             if issue_type == "Generic":
                 issue_type = "Changed on "
@@ -104,9 +103,11 @@ def mattermost_jira(token):
                 project_data = issue_fields.get("project", None)
                 project = "N/A"
                 project_url = "#"
+                project_key = "N/A"
                 if project_data:
                     project = project_data.get("name", "N/A")
                     project_url = project_data['avatarUrls']['48x48']
+                    project_key = project_data.get("key", "N/A")
 
                 assignee = issue_fields.get('assignee', None)
                 if assignee:
@@ -119,10 +120,10 @@ def mattermost_jira(token):
 
                 post_data = dict()
                 post_data['author_name'] = "Project: "+project
-                post_data['author_icon'] = project_url
-                post_data['author_link'] = PROJECT_URL+key+"/summary"
-                post_data['title'] = title
-                post_data['text'] = description
+                post_data['author_icon'] = user_photo
+                post_data['author_link'] = PROJECT_URL+project_key+"/summary"
+                post_data['title'] = "Title: "+title
+                post_data['text'] = "**Description**\n"+description
                 post_data['title_link'] = ISSUE_URL+key
                 post_data['fields'] = [
                     {
