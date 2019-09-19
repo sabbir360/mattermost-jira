@@ -118,12 +118,12 @@ def mattermost_jira(token):
                 status = issue_fields.get('status', {}).get("name", "N/A")
 
                 post_data = dict()
-                post_data['author_name'] = user_name
-                post_data['author_icon'] = user_photo
-                post_data['author_link'] = project_url
+                post_data['author_name'] = "Project: "+project
+                post_data['author_icon'] = project_url
+                post_data['author_link'] = PROJECT_URL+key+"/summary"
                 post_data['title'] = title
                 post_data['text'] = description
-                post_data['title_link'] = JIRA_URL+key
+                post_data['title_link'] = ISSUE_URL+key
                 post_data['fields'] = [
                     {
                         "short": True,
@@ -132,8 +132,8 @@ def mattermost_jira(token):
                     },
                     {
                         "short": True,
-                        "title": "Project",
-                        "value": project
+                        "title": "Creator",
+                        "value": user_name
                     },
                     {
                         "short": True,
