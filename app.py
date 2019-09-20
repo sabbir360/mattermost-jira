@@ -119,7 +119,7 @@ def mattermost_jira(token):
                 status = issue_fields.get('status', {}).get("name", "N/A")
 
                 post_data = dict()
-                post_data['author_name'] = "**Project:** \n"+project
+                post_data['author_name'] = "Project: "+project
                 post_data['author_icon'] = user_photo
                 post_data['author_link'] = PROJECT_URL+project_key+"/summary"
                 post_data['title'] = "{} - {}".format(key, title)
